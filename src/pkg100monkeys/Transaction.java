@@ -15,28 +15,40 @@ public class Transaction {
     private MonkeyMerchant monkeyMerchant;
     private TownsFolk townsFolk;
     private int transactionId;
-    
+    private String record;
+    private int increaseAmount;
     
     public Transaction(Monkey m, MonkeyMerchant mm, TownsFolk t, int id){
-       m.increasePrice(); 
+     increaseAmount =  m.increasePrice(); 
     monkey = m;
     monkeyMerchant = mm;
     townsFolk = t;
     transactionId = id; 
     
-    generateTransaction();
+   // generateTransaction();
     
     }
     
     
-  private void generateTransaction(){
+  public void generateTransaction(){
       
      monkeyMerchant.sellMonkey(monkey, townsFolk, transactionId);
+     monkey.recordTransaction(this);
       System.out.println("transaction id#" + transactionId + " generated");
       //monkey.increasePrice();
       // monkeyMerchant.printReceiptBook();
+      recordTransaction(monkey, monkeyMerchant, townsFolk, transactionId);
   }  
-    
-    
+ 
+    private void recordTransaction(Monkey m, MonkeyMerchant mm, TownsFolk t, int id){
+      
+        
+        record = "transaction id #" + id + ":  monkey #" + m.monkeyId + " sold by merchant #" + mm.getMerchantId() + " to ssn #" + t.getSSN() + " for $" + m.getPrice() + ", an increase of " + increaseAmount + "%";
+     
+  } 
+    public String printTransactionRecord(){
+        
+        return record;
+    }
 
-}
+} // end class

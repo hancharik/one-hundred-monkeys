@@ -14,9 +14,9 @@ import java.util.ArrayList;
 public class MonkeyMarket {
     
     
-    private int numberOfMerchants = 1;
-    private int numberOfTownsPeople = 10;
-    private int numberOfTransactions = 1000;
+    private int numberOfMerchants = 10;
+    private int numberOfTownsPeople = 100;
+    private int numberOfTransactions = 1;
     
     
     
@@ -34,12 +34,7 @@ public class MonkeyMarket {
        
         makeMarket();
         generateMonkeyEconomy(numberOfTransactions);
-        System.out.println("//////////////////generating sales logs//////////////////////");
-         System.out.println("//////////////////generating sales logs//////////////////////");
-          System.out.println("//////////////////generating sales logs//////////////////////");
-           System.out.println("//////////////////generating sales logs//////////////////////");
-            System.out.println("//////////////////generating sales logs//////////////////////");
-             System.out.println("//////////////////generating sales logs//////////////////////");
+ 
         generateSalesLogs();
     } // end constructor
     
@@ -88,6 +83,7 @@ public class MonkeyMarket {
        int randomCustomer = (int)(Math.random()*town.size());
        
        Transaction tempTrans = new Transaction(monkeyBucket.get(randomMonkey), monkeyMerchants.get(randomMerchant),town.get(randomCustomer), (transactions.size()+1));
+       tempTrans.generateTransaction();
        transactions.add(tempTrans);
       System.out.println(" monkey transaction #" + i + " created.");
      
@@ -104,12 +100,16 @@ public class MonkeyMarket {
      for(int i = 0; i < monkeyMerchants.size(); i++){
          monkeyMerchants.get(i).printReceiptBook();
      }
+     // generate visible banner
+     for(int i = 0; i <6; i++){
+         System.out.println("//////////////////generating sales logs//////////////////////");
+     }
+  
+      for(int i = 0; i < monkeyBucket.size(); i++){
+         monkeyBucket.get(i).printTransactions();
+     }
      
-     
-     
-     
-     
- }
+ }  // end generate sales logs
    
    
    

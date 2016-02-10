@@ -36,12 +36,16 @@ public class MonkeyMerchant{
   }    
     
    public void printReceiptBook(){
-        System.out.println("//////////////////generating sales logs//////////////////////");
-         System.out.println("//////////////////generating sales logs//////////////////////");
-          System.out.println("//////////////////generating sales logs//////////////////////");
-           System.out.println("//////////////////generating sales logs//////////////////////");
-            System.out.println("//////////////////generating sales logs//////////////////////");
-             System.out.println("//////////////////generating sales logs//////////////////////");
+         // if there is at least one transaction, generate visible banner
+   if(receipts.size() > 0){
+     for(int i = 0; i <6; i++){
+       System.out.println("//////////////////generating sales logs//////////////////////");
+     }
+   } 
+   
+   
+        
+    
         for(int s = 0; s < receipts.size(); s++){
       System.out.println(receipts.get(s));
       }
