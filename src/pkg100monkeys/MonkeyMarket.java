@@ -51,9 +51,9 @@ public class MonkeyMarket {
       town = new ArrayList();
       for(int s = 0; s < numberOfTownies; s++){
        TownsFolk townie = new TownsFolk(s); 
-       
-       System.out.println("townsfolk #" + s + "(ssn #" + townie.getSSN() + ") created, town size :" + town.size());
-       town.add(townie);
+        town.add(townie);
+       System.out.println("townsfolk #" + (s+1) + "(ssn #" + townie.getSSN() + ") created, town size :" + town.size());
+      
       }
      
  }
