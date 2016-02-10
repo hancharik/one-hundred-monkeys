@@ -5,6 +5,8 @@
  */
 package pkg100monkeys;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author mah537
@@ -12,7 +14,7 @@ package pkg100monkeys;
 public class MonkeyBucket {
     
     
-    Monkey[] bucket;// = new Monkey[100];
+    ArrayList<Monkey> bucket;// = new Monkey[100];
     
     
     
@@ -26,10 +28,10 @@ public class MonkeyBucket {
     
   private void makeThemMonkeys(int num){
      
-      bucket = new Monkey[num];
+      bucket = new ArrayList<Monkey>();
       for(int m = 0; m < num; m++){
         
-           bucket[m] = new Monkey(m);
+           bucket.add( new Monkey(m));
           
       }
       
@@ -41,9 +43,9 @@ public class MonkeyBucket {
   private void showThemMonkeys(){
      
       
-      for(int m = 0; m < bucket.length; m++){
+      for(int m = 0; m < bucket.size(); m++){
         
-           System.out.println("Monkey #" + bucket[m].monkeyId);
+           System.out.println("Monkey #" + bucket.get(m).monkeyId);
           
       }
       

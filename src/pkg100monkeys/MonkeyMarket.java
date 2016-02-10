@@ -14,30 +14,47 @@ import java.util.ArrayList;
 public class MonkeyMarket {
     
     
-    private MonkeyBucket monkeyBucket;
-    private ArrayList monkeyMerchants;
-    private ArrayList town;
+    private int numberOfMerchants = 1;
+    private int numberOfTownsPeople = 10;
+    private int numberOfTransactions = 1000;
+    
+    
+    
+    
+    
+    private ArrayList<Monkey> monkeyBucket;
+    private ArrayList<MonkeyMerchant> monkeyMerchants;
+    private ArrayList<TownsFolk>  town;
+    private ArrayList<TownsFolk> monkeyOwners;
+    private ArrayList<Transaction> transactions;
     
     
     public MonkeyMarket(){
     
        
         makeMarket();
-        
-        
+        generateMonkeyEconomy(numberOfTransactions);
+        System.out.println("//////////////////generating sales logs//////////////////////");
+         System.out.println("//////////////////generating sales logs//////////////////////");
+          System.out.println("//////////////////generating sales logs//////////////////////");
+           System.out.println("//////////////////generating sales logs//////////////////////");
+            System.out.println("//////////////////generating sales logs//////////////////////");
+             System.out.println("//////////////////generating sales logs//////////////////////");
+        generateSalesLogs();
     } // end constructor
     
  private void makeMarket(){
      
-        monkeyBucket = new MonkeyBucket();
-        makeMonkeyMerchants(40);
-        makeTownsFolk(100);
+     MonkeyBucket mobu = new MonkeyBucket();
+        monkeyBucket = mobu.bucket;
+        makeMonkeyMerchants(numberOfMerchants);
+        makeTownsFolk(numberOfTownsPeople);
      
  }   // end make market
  
  private void makeMonkeyMerchants(int numberOfMerchants){
      
-      monkeyMerchants = new ArrayList();
+      monkeyMerchants = new ArrayList<MonkeyMerchant>();
       for(int s = 0; s < numberOfMerchants; s++){
        MonkeyMerchant mm = new MonkeyMerchant(s); 
        monkeyMerchants.add(mm);
@@ -49,6 +66,7 @@ public class MonkeyMarket {
   private void makeTownsFolk(int numberOfTownies){
      
       town = new ArrayList();
+      monkeyOwners = new ArrayList();
       for(int s = 0; s < numberOfTownies; s++){
        TownsFolk townie = new TownsFolk(s); 
         town.add(townie);
@@ -57,7 +75,43 @@ public class MonkeyMarket {
       }
      
  }
+
+  
+   private void generateMonkeyEconomy(int numberOfTransactions){
+     
+       transactions = new ArrayList();
+       
+       for(int i = 1; i <= numberOfTransactions; i++){
+       
+       int randomMonkey = (int)(Math.random()*monkeyBucket.size());
+       int randomMerchant = (int)(Math.random()*monkeyMerchants.size());
+       int randomCustomer = (int)(Math.random()*town.size());
+       
+       Transaction tempTrans = new Transaction(monkeyBucket.get(randomMonkey), monkeyMerchants.get(randomMerchant),town.get(randomCustomer), (transactions.size()+1));
+       transactions.add(tempTrans);
+      System.out.println(" monkey transaction #" + i + " created.");
+     
+       } // end for loop
+       
+         System.out.println(" there should be " + transactions.size() + " transactions.");
+       
+ }   // end generate monkey economy
+  
  
- 
+   
+ private void generateSalesLogs(){
+     
+     for(int i = 0; i < monkeyMerchants.size(); i++){
+         monkeyMerchants.get(i).printReceiptBook();
+     }
+     
+     
+     
+     
+     
+ }
+   
+   
+   
     
 }  // end class
