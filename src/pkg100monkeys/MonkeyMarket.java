@@ -37,7 +37,20 @@ public class MonkeyMarket {
  
         generateSalesLogs();
     } // end constructor
+   
+    public MonkeyMarket(int numberOfMerchants, int numberOfTownsPeople, int numberOfTransactions){
     
+        this.numberOfMerchants = numberOfMerchants;
+        this.numberOfTownsPeople = numberOfTownsPeople;
+        this.numberOfTransactions = numberOfTransactions;  
+       
+        makeMarket();
+        generateMonkeyEconomy(numberOfTransactions);
+ 
+        generateSalesLogs();
+    } // end constructor
+        
+        
  private void makeMarket(){
      
      MonkeyBucket mobu = new MonkeyBucket();

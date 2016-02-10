@@ -7,6 +7,8 @@ package pkg100monkeys;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -17,22 +19,29 @@ import javax.swing.JPanel;
  *
  * @author mark
  */
-public class MonkeyPanel extends JPanel{
+public class MonkeyPanel extends JPanel implements ActionListener{
     
     MonkeyMarket monkeyTown;
     int numMonkeyz = 0;
     JLabel numberOfMonkeysLabel;
     JLabel trustTheMonkeysLabel;
     JLabel titleLabel;
-     ArrayList<TownsFolk> peopleWhoOwnMonkeys;     
-     JButton monkeyPic;
-            
+    ArrayList<TownsFolk> peopleWhoOwnMonkeys;     
+    JButton monkeyPictureButton;
+    JButton startButton;
+    SliderPanel sliderPanel;
+    JPanel monkeyPanel;
+    JPanel peopleWithMonkeysPanel;
+    int numberOfMerchants = 1;
+    int numberOfTownsPeople = 1;
+    int numberOfTransactions = 1;
+     
     public MonkeyPanel(){
         
         super();
         
         
-        monkeyTown = new MonkeyMarket();
+        //monkeyTown = new MonkeyMarket(); // moved to the make monkey panels method
         
         
         createUI();
@@ -46,38 +55,68 @@ private void createUI(){
     
     setLayout(null);
     
-    monkeyPic = new JButton();
-    monkeyPic.setIcon(new ImageIcon("images/monkey.jpg"));
-    monkeyPic.setBounds(688,164,130,127);
-    
-    JPanel p1 = monkeyPanel();
-    
-    p1.setBounds(20,20,550,550);
-    
-    JPanel p2 = peopleWithMonkeysPanel();
-    
-    p2.setBounds(80,590,420,360);
-     add(p1);
-      add(p2);
-      add(monkeyPic);
+    sliderPanel = new SliderPanel(this);
+    sliderPanel.setBounds(608,220,360,300);
+    add(sliderPanel);
+    monkeyPictureButton = new JButton();
+    monkeyPictureButton.setIcon(new ImageIcon("images/monkey.jpg"));
+    monkeyPictureButton.setBounds(688,84,130,127);
+    monkeyPictureButton.addActionListener(this);
+    add(monkeyPictureButton);
+    startButton = new JButton("start");
+    startButton.setBounds(588,700,80,42);
+    startButton.setVisible(false);
+    startButton.addActionListener(this);
+    add(startButton);
+      
+      
+  
+     makeMonkeyPanels();
  
     
 
     
-    numberOfMonkeysLabel = new JLabel("yo!");
+    numberOfMonkeysLabel = new JLabel("numberOfMonkeysLabel");
     numberOfMonkeysLabel.setBounds(538,590,420,42);
     add(numberOfMonkeysLabel);
-    trustTheMonkeysLabel = new JLabel("trust!");
+    trustTheMonkeysLabel = new JLabel("trustTheMonkeysLabel");
     trustTheMonkeysLabel.setBounds(538,640,420,42);
     add(trustTheMonkeysLabel);
     titleLabel = new JLabel("100 monkeys");
-    titleLabel.setBounds(688,64,420,42);
+    titleLabel.setBounds(688,14,420,42);
     titleLabel.setBackground(Color.yellow);
     add(titleLabel);
+   
+    
     
     
 }   // end create UI 
  
+
+private void makeMonkeyPanels(){
+    
+    monkeyTown = new MonkeyMarket(numberOfMerchants, numberOfTownsPeople, numberOfTransactions);  // this generates the data in the game
+    
+      monkeyPanel = monkeyPanel();
+    
+    monkeyPanel.setBounds(20,20,550,550);
+    
+    peopleWithMonkeysPanel = peopleWithMonkeysPanel();
+    
+    peopleWithMonkeysPanel.setBounds(80,590,420,360);
+     add(monkeyPanel);
+      add(peopleWithMonkeysPanel);
+    repaint();
+}// end make monkey panels
+
+private void removeMonkeyPanels(){
+    
+      
+     remove(monkeyPanel);
+     remove(peopleWithMonkeysPanel);
+     repaint();
+}// end make monkey panels
+
 private JPanel monkeyPanel(){
       JPanel monkPan = new JPanel();
       monkPan.setLayout(new GridLayout(10 ,10));
@@ -123,6 +162,35 @@ private JPanel monkeyPanel(){
      trustTheMonkeysLabel.setText(bannre3); 
      titleLabel.setText(bannre4); 
  }
+
+    @Override
+         public void actionPerformed(ActionEvent event){
+
+       	Object obj = event.getSource();
+       
+    
+        
+        
+                if (obj == startButton){
+
+
+                    makeMonkeyPanels();
+                    String bannre3 = "<html><h2><font color='blue'>" +  "start time!"  + "</font><font color='red'>" +  "  start game event" + "</font><h1></html>";
+                   numberOfMonkeysLabel.setText(bannre3); 
+
+                }
+                
+                
+                if (obj == monkeyPictureButton){
+
+
+                    removeMonkeyPanels();
+                    String bannre3 = "<html><h2><font color='blue'>" +  "monkey time!"  + "</font><font color='red'>" +  "   monkey monkey!" + "</font><h1></html>";
+                   numberOfMonkeysLabel.setText(bannre3); 
+
+                }
+                        
+    }  //  end action listener
  
  
  
