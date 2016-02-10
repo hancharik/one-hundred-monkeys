@@ -15,8 +15,8 @@ public class MonkeyMarket {
     
     
     private int numberOfMerchants = 10;
-    private int numberOfTownsPeople = 100;
-    private int numberOfTransactions = 1;
+    private int numberOfTownsPeople = 1000;
+    private int numberOfTransactions = 242;
     
     
     
@@ -97,18 +97,24 @@ public class MonkeyMarket {
    
  private void generateSalesLogs(){
      
+     // list merchants who sold a monkey or more
      for(int i = 0; i < monkeyMerchants.size(); i++){
          monkeyMerchants.get(i).printReceiptBook();
      }
      // generate visible banner
      for(int i = 0; i <6; i++){
-         System.out.println("//////////////////generating sales logs//////////////////////");
+        // System.out.println("//////////////////generating sales logs//////////////////////");
      }
   
+     // list activities of monkeys who were sold at least once
       for(int i = 0; i < monkeyBucket.size(); i++){
          monkeyBucket.get(i).printTransactions();
      }
      
+       // list activities of monkeys who were sold at least once
+      for(int i = 0; i < town.size(); i++){
+        town.get(i).printTransactions();
+     }
  }  // end generate sales logs
    
    

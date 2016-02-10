@@ -37,16 +37,16 @@ public class MonkeyMerchant{
     
    public void printReceiptBook(){
          // if there is at least one transaction, generate visible banner
-   if(receipts.size() > 0){
-     for(int i = 0; i <6; i++){
-       System.out.println("//////////////////generating sales logs//////////////////////");
+   if(receipts.size() > 1){  // has to be bigger than one, because one is title
+     for(int i = 0; i < 2; i++){
+       System.out.println("//////////////////merchant #" + merchantId + " sales log//////////////////////");
      }
    } 
    
    
         
     
-        for(int s = 0; s < receipts.size(); s++){
+        for(int s = 1; s < receipts.size(); s++){ // has to be bigger than one, because one is title
       System.out.println(receipts.get(s));
       }
        

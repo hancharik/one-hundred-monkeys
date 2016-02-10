@@ -5,6 +5,8 @@
  */
 package pkg100monkeys;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author mah537
@@ -12,10 +14,13 @@ package pkg100monkeys;
 public class TownsFolk {
    
     private int ssn;
-    
+    private ArrayList<Transaction> transactionHistory;
+    private ArrayList<Monkey> monkeys;
     
     public TownsFolk(int id){
     
+        monkeys = new ArrayList<Monkey>();
+         transactionHistory = new ArrayList<Transaction>();
         //ssn = id;
         ssn = setSSN();
 }
@@ -25,13 +30,38 @@ public class TownsFolk {
     
  private int setSSN(){
     int tempssn = (int)( Math.random()*1000);
-     int xInt = (int)(Math.random()*30);
+    
      return tempssn;
  }
     
+     public void recordTransaction(Transaction t){
+      
+         Monkey m = t.monkey;
+       transactionHistory.add(t);
+       monkeys.add(m);
+       
+   }  
     
-    
-    
+         public void printTransactions(){
+         
+   // if there is at least one transaction, generate visible banner
+   if(transactionHistory.size() > 0){
+       
+                for(int i = 0; i < 2; i++){
+                  System.out.println("//////////////ssn #" + ssn + " has " + transactionHistory.size() + " transactions....////////////////"); 
+                }
+                
+                for(int i = 0; i <  transactionHistory.size(); i++){
+
+                    System.out.println(transactionHistory.get(i).printTransactionRecord()); 
+
+               }
+         } // end if
+   
+   }  // end print transactions
+         
+         
+         
     public int getSSN(){
         
         return ssn;

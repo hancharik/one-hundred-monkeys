@@ -66,7 +66,7 @@ public class Monkey {
          
    // if there is at least one transaction, generate visible banner
    if(transactionHistory.size() > 0){
-     for(int i = 0; i <6; i++){
+     for(int i = 0; i < 2; i++){
        System.out.println("//////////////monkey #" + monkeyId + " has " + transactionHistory.size() + " transactions....////////////////"); 
      }
    }          

@@ -11,7 +11,7 @@ package pkg100monkeys;
  */
 public class Transaction {
     
-    private Monkey monkey;
+    public Monkey monkey;
     private MonkeyMerchant monkeyMerchant;
     private TownsFolk townsFolk;
     private int transactionId;
@@ -34,6 +34,7 @@ public class Transaction {
       
      monkeyMerchant.sellMonkey(monkey, townsFolk, transactionId);
      monkey.recordTransaction(this);
+     townsFolk.recordTransaction(this);
       System.out.println("transaction id#" + transactionId + " generated");
       //monkey.increasePrice();
       // monkeyMerchant.printReceiptBook();
