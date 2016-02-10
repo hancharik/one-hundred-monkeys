@@ -82,7 +82,18 @@ public class Monkey {
            
      }
        
-   }
+   }  // end print transaction
      
+   
+  public boolean hasPapers(){
+      
+    boolean paper = false;  
+      
+    if(transactionHistory.size() > 0){
+        paper = true;
+    }
+    
+     return paper; 
+  }   
      
 }  // end class
