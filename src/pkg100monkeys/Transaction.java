@@ -44,7 +44,7 @@ public class Transaction {
     private void recordTransaction(Monkey m, MonkeyMerchant mm, TownsFolk t, int id){
       
         
-        record = "transaction id #" + id + ":  monkey #" + m.monkeyId + " sold by merchant #" + mm.getMerchantId() + " to ssn #" + t.getSSN() + " for $" + m.getPrice() + ", an increase of " + increaseAmount + "%";
+        record = "transaction id #" + id + ":  monkey #" + m.getId() + " sold by merchant #" + mm.getMerchantId() + " to ssn #" + t.getSSN() + " for $" + m.getPrice() + ", an increase of " + increaseAmount + "%";
      
   } 
     public String printTransactionRecord(){

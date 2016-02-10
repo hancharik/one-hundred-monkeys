@@ -15,7 +15,8 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       MonkeyMarket monkeyTown = new MonkeyMarket();
+      // MonkeyMarket monkeyTown = new MonkeyMarket();
+       MonkeyFrame monkeyTown2 = new MonkeyFrame();
     }
     
 }

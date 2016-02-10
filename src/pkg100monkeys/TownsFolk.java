@@ -60,7 +60,10 @@ public class TownsFolk {
    
    }  // end print transactions
          
-         
+       public int getNumberOfMonkeys(){
+        
+        return monkeys.size();
+    }      
          
     public int getSSN(){
         

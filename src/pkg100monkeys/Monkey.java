@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class Monkey {
     
-    public int monkeyId;
+    private int monkeyId;
     private int price;
     private ArrayList<Transaction> transactionHistory;
     
@@ -55,6 +55,10 @@ public class Monkey {
    public int getPrice(){
        
        return price;
+   } 
+     public int getId(){
+       
+       return monkeyId;
    } 
    public void recordTransaction(Transaction t){
       

@@ -45,7 +45,7 @@ public class MonkeyBucket {
       
       for(int m = 0; m < bucket.size(); m++){
         
-           System.out.println("Monkey #" + bucket.get(m).monkeyId);
+           System.out.println("Monkey #" + bucket.get(m).getId());
           
       }
       

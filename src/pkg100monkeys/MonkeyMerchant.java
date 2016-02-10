@@ -28,11 +28,11 @@ public class MonkeyMerchant{
   
     
   public synchronized void sellMonkey(Monkey m, TownsFolk tf, int trans){
-     receipts.add("transaction #" + trans + ":  merchant #" + merchantId + " selling monkey #" + m.monkeyId + " to townsfolk (ssn #" + tf.getSSN() + ") for $" + m.getPrice());
+     receipts.add("transaction #" + trans + ":  merchant #" + merchantId + " selling monkey #" + m.getId() + " to townsfolk (ssn #" + tf.getSSN() + ") for $" + m.getPrice());
   } 
     
    public synchronized void acceptMonkeyReturn(Monkey m, TownsFolk tf, int trans){
-     receipts.add("transaction #" + trans + ":  merchant #" + merchantId + " accepting return of  monkey #" + m.monkeyId + " from townsfolk (ssn #" + tf.getSSN() + ") for $" + m.getPrice());
+     receipts.add("transaction #" + trans + ":  merchant #" + merchantId + " accepting return of  monkey #" + m.getId() + " from townsfolk (ssn #" + tf.getSSN() + ") for $" + m.getPrice());
   }    
     
    public void printReceiptBook(){

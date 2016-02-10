@@ -15,8 +15,8 @@ public class MonkeyMarket {
     
     
     private int numberOfMerchants = 10;
-    private int numberOfTownsPeople = 1000;
-    private int numberOfTransactions = 242;
+    private int numberOfTownsPeople = 100;
+    private int numberOfTransactions = 100;
     
     
     
@@ -117,7 +117,24 @@ public class MonkeyMarket {
      }
  }  // end generate sales logs
    
+  public ArrayList monkeys(){
+      
+      return monkeyBucket;
+  } 
    
-   
-    
+   public ArrayList peopleWhoOwnMonkeys(){
+      
+       ArrayList<TownsFolk> peepsWithMonkeys = new ArrayList<TownsFolk>();
+       
+       for(int i = 0; i < town.size(); i++){
+        if(town.get(i).getNumberOfMonkeys() > 0){
+           peepsWithMonkeys.add(town.get(i));
+        }
+     }
+       
+       
+       
+      return peepsWithMonkeys;
+  } 
+     
 }  // end class
